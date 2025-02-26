@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 
@@ -21,8 +22,16 @@ headers:{'content-type':'application/json'},
 body:JSON.stringify(user)
 })
 .then(res=>res.json())
-.then(data=>console.log(data))
-
+.then(data=>{
+  console.log("Post api response to client: ",data)
+  if(data.acknowledged)
+  {
+   
+    return toast(`User with ID: ${data.insertedId} created!`)
+  }
+  else 
+  return toast(`User creation failed!`)
+})
 }
 
   return (

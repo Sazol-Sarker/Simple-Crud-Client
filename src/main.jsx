@@ -6,16 +6,23 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Users from './components/Users/Users.jsx';
+import { ToastContainer } from 'react-toastify';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
   },
+  {
+    path:'/users',
+    loader:()=>fetch('http://localhost:5000/users'),
+    element:<Users></Users>
+  }
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
-    <RouterProvider router={router} />
-  </StrictMode>,
+    <ToastContainer/>
+    <RouterProvider router={router} />    
+  </StrictMode>
 )
