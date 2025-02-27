@@ -14,6 +14,8 @@ const email=form.email.value
 // making user obj
 const user={name,email}
 
+form.reset();
+
 // sending to server
 // POST api
 fetch('http://localhost:5000/user',{
